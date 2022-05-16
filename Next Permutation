@@ -1,0 +1,56 @@
+USING next_permutation BUILT IN FUNCTION -
+
+#include<bits/stdc++.h>
+class Solution{
+public:
+    vector<int> nextPermutation(int N, vector<int> arr){
+        // code here
+        next_permutation(arr.begin(),arr.end());
+       return arr;
+    }
+};
+
+complexity=O(n*n!)
+
+Optimized approach
+
+class Solution {
+public:
+    void nextPermutation(vector<int>& a)
+    {
+        int idx=-1;
+        
+        int n=a.size();
+        for(int i=n-1;i>0;i--) // iterating from backwards
+        {
+            if(a[i]>a[i-1])
+            {
+                idx=i;// 7 is stored here
+                break;
+            }
+        }
+        if(idx==-1) //this means array is already in descending order and we have to just reverse it
+        {
+            reverse(a.begin(),a.end());
+        }
+        else
+        {
+            int prev=idx;//prev=7
+            for(int i=idx+1;i<n;i++)// iterating from idx+1 till last
+            {
+                if(a[i]>a[idx-1] and a[i]<=a[prev])// eg. if 5>4 and 5<=6 
+                    prev=i;
+                    
+                    
+            }
+        
+        swap(a[idx-1],a[prev]);// swapping 4 and 5
+        reverse(a.begin()+idx,a.end());//reversing from 7 till last
+        }
+        
+    }
+};
+Time comlexity=O(n)
+space complexity =O(1)
+
+Eg considered above => {1,5,8,5,7,6,4,3,1}
