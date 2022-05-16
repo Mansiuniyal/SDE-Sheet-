@@ -12,7 +12,7 @@ public:
 
 complexity=O(n*n!)
 
-Optimized approach
+OPTIMIZED APPROACH
 
 class Solution {
 public:
